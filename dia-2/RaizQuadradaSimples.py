@@ -1,6 +1,6 @@
 import math;
 
-numero = float(input("Digite um número: "));
+numero = int(input("Digite um número: "));
 
 raiz = math.sqrt(numero);
 
