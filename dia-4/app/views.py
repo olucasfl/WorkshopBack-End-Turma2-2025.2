@@ -2,15 +2,14 @@ from django.shortcuts import render
 from .forms import EnderecoForm
 from .models import Endereco
 import requests
+from django.views.generic import FormView
 
-def home(request):
-    return render(request, 'home.html')
+class viaCepFormView(FormView):
+    template_name = 'buscar_cep.html'
+    form_class = EnderecoForm
+    success_url = '/'
 
-def buscar_cep(request):
-    form = EnderecoForm(request.GET or None)
-    endereco = None
-
-    if form.is_valid():
+    def form_valid(self, form):
         cep = form.cleaned_data['cep']
         response = requests.get(f'https://viacep.com.br/ws/{cep}/json/')
 
@@ -25,5 +24,9 @@ def buscar_cep(request):
                     'estado': data.get('uf', '')
                 }
             )
+            return render(self.request, self.template_name, {'form': form, 'endereco': endereco})
+        return super().form_invalid(form)
 
-    return render(request, 'buscar_cep.html', {'form': form, 'endereco': endereco})
+
+def home(request):
+    return render(request, 'home.html')

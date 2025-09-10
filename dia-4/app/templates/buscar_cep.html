@@ -6,8 +6,8 @@
   </head>
   <body>
     <h1>Buscar CEP</h1>
-    <form method="get">
-      {{ form.as_p }}
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
       <button type="submit">Buscar</button>
     </form>
 
