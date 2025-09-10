@@ -1,0 +1,8 @@
+<h1>Detalhes do CEP {{ endereco_objeto.cep }}</h1>
+<p><strong>Rua:</strong> {{ endereco_objeto.rua }}</p>
+<p><strong>Bairro:</strong> {{ endereco_objeto.bairro }}</p>
+<p><strong>Cidade:</strong> {{ endereco_objeto.cidade }}</p>
+<p><strong>Estado:</strong> {{ endereco_objeto.estado }}</p>
+
+<a href="{% url 'delete_cep' endereco_objeto.pk %}"><p>Deletar</p></a>
+<a href="{% url 'home' %}"><p>Voltar</p></a>

@@ -1,0 +1,13 @@
+<h1>Buscar CEP</h1>
+<form method="post" action="{% url 'buscar_cep' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Buscar</button>
+</form>
+
+{% if endereco_objeto %}
+<h2>Parabéns, sua busca deu certo!</h2>
+<h3>Veja na lista de CEPs</h3>
+{% endif %}
+
+<a href="{% url 'list_ceps' %}"><p>Ver todos os CEPs salvos</p></a>
+<a href="{% url 'home' %}"><p>Voltar</p></a>

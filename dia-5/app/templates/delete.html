@@ -1,0 +1,10 @@
+<h1>Deletar CEP {{ object.cep }}</h1>
+<p>Tem certeza que deseja deletar este CEP?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sim, deletar</button>
+</form>
+
+<a href="{% url 'home' %}"><p>Cancelar</p></a>
+<a href="{% url 'home' %}"><p>Voltar</p></a>

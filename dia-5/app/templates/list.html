@@ -1,0 +1,12 @@
+<h2>Todos os CEPs salvos:</h2>
+<ul>
+  {% for cep in enderecos %}
+  <li>
+    <a href="{% url 'detail_cep' cep.pk %}">{{ cep.cep }}</a>
+  </li>
+  {% empty %}
+  <li>Nenhum CEP salvo.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'buscar_cep' %}"><p>Buscar novo CEP</p></a>
+<a href="{% url 'home' %}"><p>Voltar</p></a>
